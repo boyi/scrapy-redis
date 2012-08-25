@@ -15,7 +15,7 @@ class RedisPipeline(object):
     def from_settings(cls, settings):
         host = settings.get('REDIS_HOST', 'localhost')
         port = settings.get('REDIS_PORT', 6379)
-        password = settings.get('REDIS_PSSSWORD', None)
+        password = settings.get('REDIS_PASSWORD', None)
         return cls(host, port, password=password)
 
     def process_item(self, item, spider):

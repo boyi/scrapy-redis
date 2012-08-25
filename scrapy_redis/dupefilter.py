@@ -22,7 +22,7 @@ class RFPDupeFilter(BaseDupeFilter):
     def from_settings(cls, settings):
         host = settings.get('REDIS_HOST', 'localhost')
         port = settings.get('REDIS_PORT', 6379)
-        password = settings.get('REDIS_PSSSWORD', None)
+        password = settings.get('REDIS_PASSWORD', None)
         server = redis.Redis(host, port, password=password)
         # create one-time key. needed to support to use this
         # class as standalone dupefilter with scrapy's default scheduler
