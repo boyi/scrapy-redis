@@ -15,7 +15,8 @@ class RedisPipeline(object):
     def from_settings(cls, settings):
         host = settings.get('REDIS_HOST', 'localhost')
         port = settings.get('REDIS_PORT', 6379)
-        return cls(host, port)
+        password = settings.get('REDIS_PSSSWORD', None)
+        return cls(host, port, password=password)
 
     def process_item(self, item, spider):
         return deferToThread(self._process_item, item, spider)

@@ -26,9 +26,10 @@ class Scheduler(object):
     def from_settings(cls, settings):
         host = settings.get('REDIS_HOST', REDIS_HOST)
         port = settings.get('REDIS_PORT', REDIS_PORT)
+        password = settings.get('REDIS_PSSSWORD', None)
         persist = settings.get('SCHEDULER_PERSIST', SCHEDULER_PERSIST)
         queue_key = settings.get('SCHEDULER_QUEUE_KEY', QUEUE_KEY)
-        server = redis.Redis(host, port)
+        server = redis.Redis(host, port, password=password)
         return cls(server, persist, queue_key)
 
     def open(self, spider):
